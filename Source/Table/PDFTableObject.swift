@@ -283,11 +283,11 @@ class PDFTableObject: PDFObject {
         }()
 
         let attributes: [NSAttributedStringKey: AnyObject] = [
-            NSAttributedStringKey.foregroundColor: cellStyle.colors.text,
-            NSAttributedStringKey.font: cellStyle.font,
-            NSAttributedStringKey.paragraphStyle: paragraph
+            NSForegroundColorAttributeName as NSString: cellStyle.colors.text,
+            NSFontAttributeName as NSString: cellStyle.font,
+            NSParagraphStyleAttributeName as NSString: paragraph
         ]
-        return NSAttributedString(string: text, attributes: attributes)
+        return NSAttributedString(string: text, attributes: attributes as [String : Any])
     }
 
     func createRenderObjects(generator: PDFGenerator,

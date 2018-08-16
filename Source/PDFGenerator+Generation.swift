@@ -200,7 +200,7 @@ extension PDFGenerator {
         if pagination.container != .none {
             if !pagination.hiddenPages.contains(currentPage) && currentPage >= pagination.range.start && currentPage <= pagination.range.end {
                 let text = pagination.style.format(page: currentPage, total: totalPages)
-                let attributedText = NSAttributedString(string: text, attributes: pagination.textAttributes)
+                let attributedText = NSAttributedString(string: text, attributes: pagination.textAttributes as [String : Any])
                 let textObject = PDFAttributedTextObject(attributedText: PDFAttributedText(text: attributedText))
                 result += try textObject.calculate(generator: self, container: pagination.container)
             }

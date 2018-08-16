@@ -179,7 +179,7 @@ class PDFAttributedTextObject: PDFObject {
                 textColor: &generator.textColor,
                 spacing: simple.spacing)
 
-            return NSAttributedString(string: simple.text, attributes: attributes)
+            return NSAttributedString(string: simple.text, attributes: attributes as [String : Any])
         } else if let attributedText = self.attributedText {
             return attributedText.text
         } else {
@@ -212,9 +212,9 @@ class PDFAttributedTextObject: PDFObject {
         paragraphStyle.lineSpacing = spacing
 
         return [
-            NSAttributedStringKey.font: fonts[container]!,
-            NSAttributedStringKey.foregroundColor: textColor[container]!,
-            NSAttributedStringKey.paragraphStyle: paragraphStyle
+            NSFontAttributeName as NSString: fonts[container]!,
+            NSForegroundColorAttributeName as NSString: textColor[container]!,
+            NSParagraphStyleAttributeName as NSString: paragraphStyle
         ]
     }
 
